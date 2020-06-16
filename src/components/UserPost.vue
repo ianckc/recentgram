@@ -9,7 +9,7 @@
             </div>
             <div class="mt-4 md:mt-0 md:ml-6">
                 <div class="p-2">
-                    <p class="text-sm text-gray-600 mb-2">{{post.node.taken_at_timestamp}}</p>
+                    <p class="text-sm text-gray-600 mb-2">{{post.node.taken_at_timestamp | moment('Do MMMM YYYY')}}</p>
                     <p>{{post.node.edge_media_to_caption.edges[0].node.text}}</p>
                 </div>
             </div>

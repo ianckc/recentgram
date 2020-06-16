@@ -5,6 +5,8 @@ import './assets/styles/main.css'
 
 Vue.config.productionTip = false
 
+Vue.use(require('vue-moment'));
+
 new Vue({
   store,
   render: h => h(App),
