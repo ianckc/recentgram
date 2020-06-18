@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+bg-dark-gray {
+    background-color: #535f6e;
+}
+
+bg-medium-gray {
+    background-color: #9facbd;
+}
+
+bg-light-brown {
+    background-color: #f9e4cc;
+}
+
+bg-brown {
+    background-color: #c1ad95;
+}
+
