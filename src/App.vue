@@ -3,8 +3,11 @@
     <SearchProfile />
     <div v-if="Object.keys(this.$store.getters.porfileData).length > 0">
       <UserProfile />
-      <UserPost title="Most Recent" :post="mostRecentPost" />
-      <UserPost title="Most Liked" :post="mostLikedPost" />
+      <UserPost title="Most Recent" :postKey="mostRecentPost" />
+      <div v-for="(postKey, index) in mostLikedPost" :key="postKey">
+        <UserPost v-if="index == 0" title="Most Liked" :postKey="postKey" />
+        <UserPost v-if="index > 0" title="Most Liked" :postKey="postKey" />
+      </div>
     </div>
   </div>
 </template>
@@ -23,17 +26,22 @@ export default {
   },
   computed: {
     mostRecentPost: function() {
-      return this.$store.getters.porfileData.user.edge_owner_to_timeline_media.edges[0];
+      return 0;
     },
     mostLikedPost: function() {
-      var mostLikedKey = 0;
+      var mostLikedKeys = [];
       var likesCount = 0;
-      this.$store.getters.porfileData.user.edge_owner_to_timeline_media.edges.forEach(function (item, index) {
+      this.$store.getters.porfileData.user.edge_owner_to_timeline_media.edges.forEach(function (item) {
         if (item.node.edge_liked_by.count > likesCount) {
-          mostLikedKey = index;
+            likesCount = item.node.edge_liked_by.count;
         }
       });
-      return this.$store.getters.porfileData.user.edge_owner_to_timeline_media.edges[mostLikedKey];
+      this.$store.getters.porfileData.user.edge_owner_to_timeline_media.edges.forEach(function (item, index) {
+        if (item.node.edge_liked_by.count == likesCount) {
+          mostLikedKeys.push(index);
+        }
+      });
+      return mostLikedKeys;
     },
   }
 }
