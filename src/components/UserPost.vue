@@ -1,20 +1,19 @@
 <template>
     <div class="section bg-blue-100 pt-12 pb-12">
         <div class="text-center">
-            <h2 class="text-3xl mb-4">{{title}}</h2>
+            <h2 v-if="title" class="text-3xl mb-4">{{title}}</h2>
         </div>
         <div class="md:flex w-9/12 lg:w-1/2 mx-auto bg-white" data-aos="fade-up">
-            <div class="md:flex-shrink-0">
+            <div class="md:w-1/2 md:flex-shrink-0">
                 <img class="w-full" v-bind:src="post.node.thumbnail_src" v-bind:alt="post.node.accessibility_caption" />
             </div>
-            <div class="mt-4 md:mt-0 md:ml-6">
+            <div class="mt-4 md:w-1/2 md:mt-0 md:ml-6">
                 <div class="p-2">
                     <p class="text-sm text-gray-600 mb-2">{{post.node.taken_at_timestamp | moment('Do MMMM YYYY')}}</p>
                     <p>{{post.node.edge_media_to_caption.edges[0].node.text}}</p>
                 </div>
             </div>
         </div>
-        <!--<div class="py-10 px-6 text-center tracking-wide grid grid-cols-2 gap-6 bg-white">-->
         <div class="bg-white w-9/12 lg:w-1/2 mx-auto grid grid-cols-2 text-center pt-4 pb-4">
             <div class="lg:w-6/12 mx-auto">
                 <p class="text-lg text-gray-600">{{post.node.edge_liked_by.count}}</p>
