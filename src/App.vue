@@ -76,7 +76,6 @@ export default {
       var otherPostKeys = [];
 
       this.$store.getters.porfileData.user.edge_owner_to_timeline_media.edges.forEach(function (item, index) {
-        console.log(item);
         if (!postsToRemove.includes(index)) {
           otherPostKeys.push(index);
         }
