@@ -12,6 +12,10 @@
         <UserPost v-if="index == 0" title="Most Commented On" :postKey="postKey" />
         <UserPost v-if="index > 0" :postKey="postKey" />
       </div>
+      <div v-for="(postKey, index) in otherPosts" :key="postKey">
+        <UserPost v-if="index == 0" title="Other Posts" :postKey="postKey" />
+        <UserPost v-if="index > 0" :postKey="postKey" />
+      </div>
     </div>
   </div>
 </template>
@@ -62,6 +66,24 @@ export default {
       });
       return mostCommentedKeys;
     },
+    otherPosts: function() {
+
+      var mostLikedKeys = this.mostLikedPosts;
+      var mostCommentedKeys = this.mostCommentedPosts;
+      var postsToRemove = mostLikedKeys.concat(mostCommentedKeys);
+      postsToRemove.push(0);
+
+      var otherPostKeys = [];
+
+      this.$store.getters.porfileData.user.edge_owner_to_timeline_media.edges.forEach(function (item, index) {
+        console.log(item);
+        if (!postsToRemove.includes(index)) {
+          otherPostKeys.push(index);
+        }
+      });
+
+      return otherPostKeys;
+    }
   }
 }
 </script>
