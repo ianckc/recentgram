@@ -10,7 +10,7 @@
             <div class="mt-4 md:w-1/2 md:mt-0 md:ml-6">
                 <div class="p-2">
                     <p class="text-sm text-gray-600 mb-2">{{getPost.node.taken_at_timestamp | moment('Do MMMM YYYY')}}</p>
-                    <p>{{getPost.node.edge_media_to_caption.edges[0].node.text}}</p>
+                    <p v-if="getPost.node.edge_media_to_caption.edges[0]">{{getPost.node.edge_media_to_caption.edges[0].node.text}}</p>
                 </div>
             </div>
         </div>
