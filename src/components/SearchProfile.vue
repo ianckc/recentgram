@@ -9,6 +9,7 @@
                 </svg>
                 </button>
                 <div class="text-center pt-4 pb-4">
+                    <div v-if="loading" class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
                     <p v-if="this.error" class="text-red-400">An Instagram profile with that username could not be found</p>
                     <p v-if="this.profile">Scroll down to view the profile</p>
                 </div>
@@ -25,19 +26,23 @@
             return {
                 error: false,
                 profile: false,
-                username: ''
+                username: '',
+                loading: false
             }
         },
         methods: {
             searchProfile() {
+                this.loading = true;
                 this.$store.commit('setProfileData', {});
                 axios.get('https://www.instagram.com/' + this.username + '/?__a=1')
                     .then((response) => {
+                        this.loading = false;
                         this.$store.commit('setProfileData', response.data.graphql);
                         this.error = false;
                         this.profile = true;
                     })
                     .catch((error) => {
+                        this.loading = false;
                         this.error = error;
                         this.profile = false;
                     });
