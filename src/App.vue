@@ -9,7 +9,7 @@
         <UserPost v-if="index > 0" :postKey="postKey" />
       </div>
       <div v-for="(postKey, index) in mostCommentedPosts" :key="postKey">
-        <UserPost v-if="index == 0" title="Most Commented On" :postKey="postKey" />
+        <UserPost v-if="index == 0" title="Most Commented On" :postKey="postKey" backgroundClass="bg-brown" />
         <UserPost v-if="index > 0" :postKey="postKey" />
       </div>
       <div v-for="(postKey, index) in otherPosts" :key="postKey">

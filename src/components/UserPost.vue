@@ -1,5 +1,5 @@
 <template>
-    <div class="section bg-blue-100 pt-12 pb-12">
+    <div class="section pt-12 pb-12" :class="backgroundClass">
         <div class="text-center">
             <h2 v-if="title" class="text-3xl mb-4">{{title}}</h2>
         </div>
@@ -40,7 +40,11 @@
         name: "UserPost",
         props: {
             title: String,
-            postKey: Number
+            postKey: Number,
+            backgroundClass: {
+                type: String,
+                default: 'bg-blue-100'
+            }
         },
         computed: {
             getPost: function() {
