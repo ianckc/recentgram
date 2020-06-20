@@ -5,7 +5,7 @@
       <UserProfile />
       <UserPost title="Most Recent" :postKey="mostRecentPost" />
       <div v-for="(postKey, index) in mostLikedPosts" :key="postKey">
-        <UserPost v-if="index == 0" title="Most Liked" :postKey="postKey" />
+        <UserPost v-if="index == 0" title="Most Liked" :postKey="postKey" backgroundClass="bg-light-brown" />
         <UserPost v-if="index > 0" :postKey="postKey" />
       </div>
       <div v-for="(postKey, index) in mostCommentedPosts" :key="postKey">
