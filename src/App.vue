@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <vue-headful
+            title="Recentgram"
+            description="View Instagram users recent posts from the public feed"
+    />
     <SearchProfile />
     <div v-if="Object.keys(this.$store.getters.porfileData).length > 0">
       <UserProfile />

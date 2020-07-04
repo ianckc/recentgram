@@ -4,6 +4,9 @@ import { store } from './store/store'
 import './assets/styles/main.css'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import vueHeadful from 'vue-headful';
+
+Vue.component('vue-headful', vueHeadful);
 
 Vue.config.productionTip = false
 
