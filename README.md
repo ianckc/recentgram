@@ -1,4 +1,6 @@
-# recentgram
+# Recentgram
+
+## No longer receiving security updates
 
 ## Project setup
 ```
